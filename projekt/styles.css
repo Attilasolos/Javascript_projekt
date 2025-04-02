@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Orbitron', sans-serif;
+    transition: background 0.3s ease;
+    user-select: none; /* Disable text selection */
+}
+
+body.dark-mode {
+    background: linear-gradient(135deg, #0a0a23, #1a1a3a);
+}
+
+.game-container {
+    position: relative;
+    width: 1000px;
+    height: 750px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#gameCanvas {
+    border: 3px solid #00b7eb;
+    transition: background 0.3s ease;
+}
+
+body.dark-mode #gameCanvas {
+    background: #0a0a23;
+}
+
+body.light-mode #gameCanvas {
+    background: #ffffff;
+}
+
+.hud {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid #00b7eb;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    transition: color 0.3s ease, background 0.3s ease;
+}
+
+body.dark-mode .hud {
+    color: #00ffcc;
+    background: rgba(10, 10, 35, 0.9);
+}
+
+body.light-mode .hud {
+    color: #006064;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.hud p {
+    margin: 8px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.score-hud {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: 24px;
+    text-align: right;
+    transition: color 0.3s ease, background 0.3s ease, border 0.3s ease;
+}
+
+body.dark-mode .score-hud {
+    color: #ffcc00;
+    background: rgba(10, 10, 35, 0.9);
+    border: 2px solid #ffcc00;
+}
+
+.score-hud p {
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.hidden {
+    display: none;
+}
+
+.start-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    border-radius: 15px;
+    border: 3px solid #00b7eb;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    z-index: 10;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .start-screen {
+    background: rgba(10, 10, 35, 0.9);
+    color: #00ffcc;
+}
+
+.start-screen h1 {
+    font-size: 48px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.start-screen button {
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 24px;
+    background: linear-gradient(135deg, #00b7eb, #0088b3);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: transform 0.1s ease;
+}
+
+.start-screen button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #0088b3, #00b7eb);
+}

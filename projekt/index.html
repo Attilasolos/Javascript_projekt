@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Defender</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/favicon-16x16.png">
+</head>
+<body class="dark-mode">
+    <div class="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div class="hud">
+            <p>Szint: <span id="level">1</span></p>
+            <p>Életerő: <span id="health">5</span></p>
+            <p>Lövés sebesség: <span id="fireRateLevel">1</span></p>
+            <p>Lövedékek száma: <span id="bulletCountLevel">1</span></p>
+            <p>Életerő: <span id="healthLevel">1</span></p>
+        </div>
+        <div id="scoreDisplay" class="score-hud">
+            <p>Pontszám: <span id="score">0</span></p>
+        </div>
+        <div id="bossHealthDisplay" class="boss-hud">
+            <p id="bossDistanceText">Boss távolság: <span id="bossDistance">2000</span> m</p>
+            <div id="bossHealthBar" class="health-bar hidden"></div>
+        </div>
+        <div id="gameOver" class="hidden">
+            <h1>Játék Vége!</h1>
+            <p>Elért szint: <span id="finalLevel"></span></p>
+            <p>Végső pontszám: <span id="finalScore"></span></p>
+            <button onclick="restartGame()">Újraindítás</button>
+        </div>
+    </div>
+    <div id="startScreen" class="start-screen">
+        <h1>Space Defender</h1>
+        <button id="startGame">Játék kezdése</button>
+        <button id="showInstructions">Magyarázat</button>
+        <button id="toggleMode">Light Mode</button>
+    </div>
+    <script src="player.js"></script>
+    <script src="enemy.js"></script>
+    <script src="items.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
