@@ -132,3 +132,50 @@ body.dark-mode .start-screen {
     transform: scale(1.05);
     background: linear-gradient(135deg, #0088b3, #00b7eb);
 }
+#instructions {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    border-radius: 15px;
+    border: 3px solid #00b7eb;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    z-index: 10;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+body.dark-mode #instructions {
+    background: rgba(10, 10, 35, 0.9);
+    color: #00ffcc;
+}
+
+body.light-mode #instructions {
+    background: rgba(255, 255, 255, 0.9);
+    color: #006064;
+}
+#instructions h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+#instructions p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+#instructions button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background: linear-gradient(135deg, #00b7eb, #0088b3);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: transform 0.1s ease;
+}
+
+#instructions button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #0088b3, #00b7eb);
+}
