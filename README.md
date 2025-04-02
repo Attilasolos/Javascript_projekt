@@ -35,5 +35,3 @@ A Space Defender játékhoz egyszerűen nyisd meg az `index.html` fájlt egy web
 
 ## Egyéb Információ
 - A játék HTML5, CSS és JavaScript használatával készült.
-- Hozzájárulások szívesen fogadottak; nézd meg a GitHub issues-t a feladatokért.
-- Licenc: MIT Licenc.
