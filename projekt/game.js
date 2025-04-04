@@ -64,3 +64,27 @@ toggleModeButton.addEventListener('click', () => {
     document.body.classList.toggle('light-mode');
     toggleModeButton.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
 });
+
+function spawnEnemies() {
+    const x = Math.random() * (canvas.width - 48);
+    enemies.push(new Enemy(x, -48));
+}
+
+function gameLoop() {
+    if (!gameRunning) return;
+
+    const now = Date.now();
+    const deltaTime = (now - lastTime) / 1000;
+    lastTime = now;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let enemy of enemies) {
+        enemy.move();
+        enemy.draw(ctx);
+    }
+
+    player.draw(ctx);
+    updateHUD();
+    requestAnimationFrame(gameLoop);
+}
