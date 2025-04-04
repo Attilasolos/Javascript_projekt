@@ -70,21 +70,26 @@ function spawnEnemies() {
     enemies.push(new Enemy(x, -48));
 }
 
+
+document.addEventListener('keydown', (e) => (keys[e.key] = true));
+document.addEventListener('keyup', (e) => (keys[e.key] = false));
 function gameLoop() {
     if (!gameRunning) return;
-
+    
     const now = Date.now();
     const deltaTime = (now - lastTime) / 1000;
     lastTime = now;
-
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+    
+    player.move(keys, canvas);
+    player.draw(ctx);
+    
     for (let enemy of enemies) {
         enemy.move();
         enemy.draw(ctx);
     }
-
-    player.draw(ctx);
+    
     updateHUD();
     requestAnimationFrame(gameLoop);
 }
