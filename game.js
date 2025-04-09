@@ -40,6 +40,57 @@ let bossLastShot = 0;
 let speedBoostActive = false;
 let bossesDefeated = 0;
 
+class Particle {
+    constructor(x, y, color, size, speedX, speedY, life) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.size = size;
+        this.speedX = speedX;
+        this.speedY = speedY;
+        this.life = life;
+    }
+
+    update(deltaTime) {
+        this.x += this.speedX * deltaTime * 60;
+        this.y += this.speedY * deltaTime * 60;
+        this.life -= deltaTime;
+    }
+
+    draw(ctx) {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+function spawnEnemies() {
+    const enemyCount = Math.floor(currentLevel / 2) + 1;
+    for (let i = 0; i < enemyCount; i++) {
+        const x = Math.random() * (canvas.width - 48);
+        enemies.push(new Enemy(x, -48, currentLevel));
+    }
+}
+document.addEventlistener('keydown', (e) =>{
+    keys[e.key] = true;
+    if (e.key === ' ' && gameRunning) {
+        player.fire(bullets);
+    }
+});
+document.addEventListener('keyup', (e) => (keys[e.key] = false));
+
+startScreen.classList.remove('hidden');
+startGameButton.addEventListener('click', () => {
+    startScreen.classList.add('hidden');
+    gameRunning = true;
+    spawnEnemies();
+    spawnPowerUps();
+    updateHUD();
+    gameLoop();
+});
+
+
 startScreen.classList.remove('hidden');
 startGameButton.addEventListener('click', () => {
     startScreen.classList.add('hidden');
@@ -64,6 +115,14 @@ toggleModeButton.addEventListener('click', () => {
     document.body.classList.toggle('light-mode');
     toggleModeButton.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
 });
+
+function updateBossHealthBar() {
+    if (boss && bossHealthBar) {
+        const maxHealth = 20 + currentLevel * 10;
+        const healthPercentage = (boss.health / maxHealth) * 100;
+        bossHealthBar.style.width = `${Math.max(0, healthPercentage)}%`;
+    }
+}
 
 function spawnEnemies() {
     const x = Math.random() * (canvas.width - 48);

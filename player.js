@@ -26,4 +26,22 @@ class Player {
         if (keys['ArrowUp'] && this.y > 0) this.y -= this.speed;
         if (keys['ArrowDown'] && this.y < canvas.height - this.height) this.y += this.speed;
     }
+    fire(bullets) {
+        const now = Date.now();
+        const fireRate = 300 / this.fireRateLevel;
+        if (now - this.lastShot > fireRate) {
+            for (let i = 0; i < this.bulletCountLevel; i++) {
+                bullets.push({
+                    x: this.x + this.width / 2 - 2 + (i * 10 - (this.bulletCountLevel - 1) * 5),
+                    y: this.y,
+                    width: 4,
+                    height: 10,
+                    speed: 10
+                });
+            }
+            this.lastShot = now;
+        }
+    }
 }
+
+
