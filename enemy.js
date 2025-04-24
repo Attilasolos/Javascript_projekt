@@ -1,10 +1,11 @@
 class Enemy {
-    constructor(x, y) {
+    constructor(x, y, level) {
         this.x = x;
         this.y = y;
         this.width = 48;
         this.height = 48;
-        this.speed = 2;
+        this.speed = 1 + level * 0.2;
+        this.health = 3;
         this.img = new Image();
         this.img.src = 'assets/enemy.png';
     }
@@ -16,6 +17,7 @@ class Enemy {
     move() {
         this.y += this.speed;
     }
+
     collidesWith(obj) {
         return (
             this.x < obj.x + obj.width &&
@@ -29,13 +31,14 @@ class Enemy {
         this.health -= amount;
     }
 }
+
 class Boss {
     constructor(x, y, level) {
         this.x = x;
         this.y = y;
         this.width = 128;
         this.height = 128;
-        this.speed = 2 + level * 0.5;
+        this.speed = 1.4 + level * 0.5;
         this.health = 20 + level * 10;
         this.direction = 1;
         this.level = level;

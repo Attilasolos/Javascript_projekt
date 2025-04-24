@@ -4,7 +4,7 @@ class Player {
         this.y = 650;
         this.width = 64;
         this.height = 64;
-        this.speed = 5;
+        this.speed = 2;
         this.health = 5;
         this.maxHealth = 5;
         this.score = 0;
@@ -26,6 +26,7 @@ class Player {
         if (keys['ArrowUp'] && this.y > 0) this.y -= this.speed;
         if (keys['ArrowDown'] && this.y < canvas.height - this.height) this.y += this.speed;
     }
+
     fire(bullets) {
         const now = Date.now();
         const fireRate = 300 / this.fireRateLevel;
@@ -42,6 +43,36 @@ class Player {
             this.lastShot = now;
         }
     }
+
+    takeDamage(amount) {
+        this.health -= amount;
+    }
+
+    heal(amount) {
+        this.health = Math.min(this.health + amount, this.maxHealth);
+    }
+
+    applySpeedBoost() {
+        this.speed += 1;
+        setTimeout(() => (this.speed -= 1), 5000);
+    }
+
+    collidesWith(obj) {
+        return (
+            this.x < obj.x + obj.width &&
+            this.x + this.width > obj.x &&
+            this.y < obj.y + obj.height &&
+            this.y + this.height > obj.y
+        );
+    }
+
+    upgradeSkill(skill) {
+        if (skill === 'fireRate') this.fireRateLevel++;
+        if (skill === 'bulletCount') this.bulletCountLevel++;
+        if (skill === 'health') {
+            this.healthLevel++;
+            this.maxHealth += 2;
+            this.health = Math.min(this.health + 2, this.maxHealth);
+        }
+    }
 }
-
-

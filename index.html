@@ -31,6 +31,20 @@
             <p>Végső pontszám: <span id="finalScore"></span></p>
             <button onclick="restartGame()">Újraindítás</button>
         </div>
+        <div id="levelUp" class="hidden">
+            <h1>Szint teljesítve!</h1>
+            <p>Válassz egy fejlesztést:</p>
+            <button onclick="upgradeSkill('fireRate')">Lövés sebesség növelése</button>
+            <button onclick="upgradeSkill('bulletCount')">Lövedékek számának növelése</button>
+            <button onclick="upgradeSkill('health')">Életerő növelése</button>
+        </div>
+        <div id="winScreen" class="hidden">
+            <h1>Nyertél!</h1>
+            <p>Végső pontszám: <span id="winFinalScore"></span></p>
+            <p>Legyőzött bossok: <span id="winBossesDefeated"></span></p>
+            <button onclick="restartGame()">Újraindítás</button>
+            <button onclick="exitGame()">Kilépés</button>
+        </div>
     </div>
     <div id="startScreen" class="start-screen">
         <h1>Space Defender</h1>
